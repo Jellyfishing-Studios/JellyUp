@@ -1,0 +1,1883 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Jellyfishing Studios | Robust Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 20%, #0a0a2a, #1a1a4a, #0d0d2b);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="10" cy="10" r="2" fill="%237b68ee"/><circle cx="90" cy="30" r="3" fill="%239370db"/><circle cx="30" cy="80" r="4" fill="%238a2be2"/><circle cx="70" cy="70" r="2" fill="%23b19cd9"/></svg>');
+            background-size: 100px 100px;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatBg 60s linear infinite;
+        }
+
+        @keyframes floatBg {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-50px) rotate(5deg); }
+        }
+
+        /* Enhanced jellyfish animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            50% { transform: translateY(-25px) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(-2deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(123, 104, 238, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(147, 112, 219, 0.7); }
+        }
+
+        /* Jellyfish tentacle animation */
+        @keyframes tentacleWave {
+            0%, 100% { transform: translateY(0) scaleY(1) rotate(0deg); }
+            25% { transform: translateY(-8px) scaleY(1.2) rotate(2deg); }
+            50% { transform: translateY(8px) scaleY(0.8) rotate(-2deg); }
+            75% { transform: translateY(-5px) scaleY(1.1) rotate(1deg); }
+        }
+
+        @keyframes swim {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(30px, -20px) rotate(5deg); }
+            40% { transform: translate(10px, -40px) rotate(-3deg); }
+            60% { transform: translate(-20px, -25px) rotate(2deg); }
+            80% { transform: translate(-30px, 10px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(20px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, -15px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 80vh;
+            position: relative;
+            z-index: 100;
+        }
+
+        /* Cool header with glassmorphism */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            position: relative;
+            z-index: 10000;
+            background: rgba(10, 10, 42, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 60px;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 10001;
+            text-shadow: 0 0 20px #7b68ee;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #7b68ee, #b19cd9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 30px #9370db;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: #7b68ee;
+            filter: drop-shadow(0 0 15px #7b68ee);
+            animation: pulse 4s infinite ease-in-out;
+            position: relative;
+            z-index: 10002;
+            /* Removed blur effect */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Jellyfish emoji - visible on PC, hidden on mobile */
+        .desktop-emoji {
+            display: inline-block;
+        }
+
+        .mobile-emoji {
+            display: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            position: relative;
+            z-index: 10001;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #e6e6fa;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            z-index: 10001;
+            font-size: 1rem;
+            background: rgba(123, 104, 238, 0.1);
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        nav a.active {
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            color: white;
+            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.4);
+            border-color: transparent;
+        }
+
+        nav a:hover {
+            background: rgba(123, 104, 238, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.3);
+        }
+
+        /* Hero section with cool effects */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 200;
+            background: rgba(10, 10, 42, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            margin: 20px 0;
+            animation: glow 6s infinite;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7b68ee, #b19cd9, #8a2be2, #9370db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 25px rgba(123, 104, 238, 0.3);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero h1 .desktop-emoji {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 0 20px #7b68ee);
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 4vw, 1.8rem);
+            margin-bottom: 30px;
+            color: #b19cd9;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .catchphrase {
+            font-size: clamp(1rem, 3.5vw, 1.3rem);
+            margin: 30px auto;
+            padding: 20px 25px;
+            background: rgba(123, 104, 238, 0.15);
+            border-radius: 30px;
+            display: inline-block;
+            border: 2px solid rgba(123, 104, 238, 0.5);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            max-width: 90%;
+            position: relative;
+            z-index: 200;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .catchphrase:hover {
+            background: rgba(123, 104, 238, 0.25);
+            transform: scale(1.03);
+            border-color: #9370db;
+            box-shadow: 0 15px 40px rgba(123, 104, 238, 0.4);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #7b68ee, #9370db, #8a2be2);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.4);
+            cursor: pointer;
+            border: none;
+            z-index: 200;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(123, 104, 238, 0.6);
+        }
+
+        /* Cool service cards */
+        .services-home, .services-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+            position: relative;
+            z-index: 200;
+        }
+
+        .service-card {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 200;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(123, 104, 238, 0.2), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 50px rgba(123, 104, 238, 0.3);
+            border-color: #7b68ee;
+        }
+
+        .service-card i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 20px #7b68ee);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: #b19cd9;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* Page styles */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            position: relative;
+            z-index: 200;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 200;
+            background: rgba(10, 10, 42, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            font-size: clamp(2rem, 7vw, 3rem);
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #7b68ee, #b19cd9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: #b19cd9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* About section */
+        .about-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            align-items: center;
+        }
+
+        .about-content, .founder-card {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 35px;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .founder-card {
+            text-align: center;
+        }
+
+        .founder-card h3 {
+            font-size: 2rem;
+            margin: 20px 0 5px;
+            color: #7b68ee;
+        }
+
+        .founder-title {
+            font-size: 1.2rem;
+            color: #b19cd9;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .founder-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Contact section */
+        .contact-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .contact-info, .contact-form {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 35px;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(123, 104, 238, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(123, 104, 238, 0.1);
+        }
+
+        .contact-item:hover {
+            background: rgba(123, 104, 238, 0.2);
+            transform: translateX(10px);
+            border-color: #7b68ee;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #7b68ee;
+        }
+
+        .contact-details p, .contact-details a {
+            color: #b19cd9;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #7b68ee;
+        }
+
+        /* Cool form styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #e6e6fa;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(10, 10, 42, 0.7);
+            border: 2px solid rgba(123, 104, 238, 0.2);
+            border-radius: 20px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #7b68ee;
+            box-shadow: 0 0 20px rgba(123, 104, 238, 0.3);
+            background: rgba(10, 10, 42, 0.9);
+        }
+
+        .form-control::placeholder {
+            color: rgba(177, 156, 217, 0.5);
+        }
+
+        select.form-control {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237b68ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 16px;
+        }
+
+        textarea.form-control {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+            position: relative;
+            z-index: 200;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(123, 104, 238, 0.5);
+        }
+
+        /* Portfolio grid */
+        .portfolio-section {
+            margin: 40px 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 50px rgba(123, 104, 238, 0.3);
+            border-color: #7b68ee;
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a4a, #7b68ee);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #7b68ee;
+        }
+
+        .portfolio-content p {
+            color: #b19cd9;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .portfolio-tag {
+            background: rgba(123, 104, 238, 0.2);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #b19cd9;
+            border: 1px solid rgba(123, 104, 238, 0.3);
+        }
+
+        /* JELLYFISH-SHAPED DIVS WITH MOVING TENTACLES - MOUTHS REMOVED */
+        .jellyfish-div {
+            position: fixed;
+            width: 150px;
+            height: 220px;
+            z-index: 9999;
+            pointer-events: none;
+            filter: drop-shadow(0 0 20px rgba(123, 104, 238, 0.6));
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .jellyfish-body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: radial-gradient(circle at 30% 30%, rgba(180, 130, 255, 0.8), rgba(100, 50, 200, 0.5));
+            border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+            backdrop-filter: blur(2px);
+            border: 3px solid rgba(200, 180, 255, 0.6);
+            box-shadow: 0 0 40px rgba(150, 100, 255, 0.7), inset 0 0 30px rgba(255, 255, 255, 0.3);
+            animation: pulse 5s infinite ease-in-out;
+        }
+
+        .jellyfish-tentacles {
+            position: absolute;
+            top: 55%;
+            left: 0;
+            width: 100%;
+            height: 45%;
+            display: flex;
+            justify-content: space-around;
+            filter: drop-shadow(0 0 10px rgba(150, 100, 255, 0.6));
+        }
+
+        .tentacle {
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(200, 160, 255, 0.9), rgba(120, 70, 200, 0.3));
+            border-radius: 3px;
+            transform-origin: top center;
+            animation: tentacleWave 2.5s infinite ease-in-out;
+            filter: blur(1px);
+            box-shadow: 0 0 15px rgba(180, 130, 255, 0.7);
+        }
+
+        .tentacle:nth-child(1) { animation-delay: 0s; height: 95%; width: 8px; }
+        .tentacle:nth-child(2) { animation-delay: 0.3s; height: 85%; width: 7px; }
+        .tentacle:nth-child(3) { animation-delay: 0.6s; height: 100%; width: 9px; }
+        .tentacle:nth-child(4) { animation-delay: 0.9s; height: 90%; width: 6px; }
+        .tentacle:nth-child(5) { animation-delay: 1.2s; height: 80%; width: 7px; }
+        .tentacle:nth-child(6) { animation-delay: 1.5s; height: 95%; width: 8px; }
+        .tentacle:nth-child(7) { animation-delay: 1.8s; height: 85%; width: 6px; }
+        .tentacle:nth-child(8) { animation-delay: 2.1s; height: 75%; width: 7px; }
+        .tentacle:nth-child(9) { animation-delay: 2.4s; height: 90%; width: 8px; }
+        .tentacle:nth-child(10) { animation-delay: 2.7s; height: 80%; width: 7px; }
+
+        .
+
+        
+
+        /* MOUTH STYLES REMOVED COMPLETELY */
+
+        /* Individual jellyfish positions and animations */
+        .jellyfish1 { top: 5%; left: 2%; animation: swim 25s infinite ease-in-out; transform: scale(0.8); }
+        .jellyfish2 { top: 15%; right: 3%; animation: swim 22s infinite ease-in-out; animation-delay: -3s; transform: scale(1.1); }
+        .jellyfish3 { bottom: 10%; left: 8%; animation: drift 28s infinite ease-in-out; animation-delay: -5s; transform: scale(0.9); }
+        .jellyfish4 { top: 30%; right: 15%; animation: swim 24s infinite ease-in-out; animation-delay: -7s; transform: scale(1.2); }
+        .jellyfish5 { bottom: 20%; right: 5%; animation: drift 30s infinite ease-in-out; animation-delay: -2s; transform: scale(0.7); }
+        .jellyfish6 { bottom: 40%; left: 20%; animation: swim 26s infinite ease-in-out; animation-delay: -9s; transform: scale(1); }
+        .jellyfish7 { top: 60%; left: 25%; animation: drift 27s infinite ease-in-out; animation-delay: -4s; transform: scale(0.8); }
+        .jellyfish8 { top: 70%; right: 20%; animation: swim 29s infinite ease-in-out; animation-delay: -6s; transform: scale(1.1); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(123, 104, 238, 0.2);
+            color: #b19cd9;
+            position: relative;
+            z-index: 200;
+            background: rgba(10, 10, 42, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #b19cd9;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: #7b68ee;
+            transform: translateY(-3px);
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #7b68ee;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .home-link:hover {
+            transform: translateX(5px);
+            color: #9370db;
+        }
+
+        .success-message, .error-message {
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .success-message {
+            background: rgba(72, 187, 120, 0.15);
+            border: 2px solid #48bb78;
+            color: #48bb78;
+        }
+
+        .error-message {
+            background: rgba(245, 101, 101, 0.15);
+            border: 2px solid #f56565;
+            color: #f56565;
+        }
+
+        /* MOBILE OPTIMIZATION - JELLYFISH MOVED TO FRONT AND VISIBLE */
+        @media (max-width: 992px) {
+            /* Medium screens - reduce jellyfish count and simplify */
+            .jellyfish-div {
+                opacity: 0.8;
+                filter: drop-shadow(0 0 15px rgba(123, 104, 238, 0.5));
+                z-index: 9999;
+            }
+            
+            /* Hide some jellyfish on medium screens */
+            .jellyfish4, .jellyfish5, .jellyfish6, .jellyfish7, .jellyfish8 {
+                display: none;
+            }
+            
+            /* Keep 3 jellyfish on medium screens */
+            .jellyfish1, .jellyfish2, .jellyfish3 {
+                display: block;
+                width: 120px;
+                height: 170px;
+            }
+            
+            /* Reduce tentacles count for better performance */
+            .jellyfish1 .tentacle:nth-child(n+6),
+            .jellyfish2 .tentacle:nth-child(n+6),
+            .jellyfish3 .tentacle:nth-child(n+6) {
+                display: none;
+            }
+            
+            /* Keep animations */
+            .jellyfish1, .jellyfish2, .jellyfish3 {
+                animation: float 12s infinite ease-in-out !important;
+            }
+        }
+        /* PC and larger screens - make jellyfish more transparent */
+@media (min-width: 993px) {
+    .jellyfish-div {
+        opacity: 0.3 !important; /* Much lighter so content shows through */
+        filter: drop-shadow(0 0 10px rgba(123, 104, 238, 0.3)) !important;
+    }
+    
+    /* Optional: Make them even lighter when hovering over content */
+    .container:hover ~ .jellyfish-div,
+    header:hover ~ .jellyfish-div,
+    .page:hover ~ .jellyfish-div {
+        opacity: 0.2 !important;
+    }
+    
+    /* Reduce the glow effect */
+    .jellyfish-body {
+        box-shadow: 0 0 20px rgba(150, 100, 255, 0.3) !important;
+    }
+    
+    /* Make tentacles less prominent */
+    .tentacle {
+        filter: blur(2px) !important;
+        opacity: 0.7 !important;
+    }
+}
+
+/* Even lighter for very large screens */
+@media (min-width: 1400px) {
+    .jellyfish-div {
+        opacity: 0.25 !important;
+    }
+}
+
+        @media (max-width: 768px) {
+            .desktop-emoji {
+                display: none;
+            }
+            
+            .mobile-emoji {
+                display: inline-block;
+            }
+            
+            /* Show 3 jellyfish on mobile with good visibility */
+            .jellyfish-div {
+                width: 100px;
+                height: 140px;
+                opacity: 0.8;
+                z-index: 9999;
+                filter: drop-shadow(0 0 20px rgba(123, 104, 238, 0.6));
+            }
+            
+            /* Show first 3 jellyfish */
+            .jellyfish1, .jellyfish2, .jellyfish3 {
+                display: block;
+            }
+            
+            .jellyfish4, .jellyfish5, .jellyfish6, .jellyfish7, .jellyfish8 {
+                display: none;
+            }
+            
+            /* Keep 4 tentacles per jellyfish */
+            .jellyfish1 .tentacle:nth-child(n+5),
+            .jellyfish2 .tentacle:nth-child(n+5),
+            .jellyfish3 .tentacle:nth-child(n+5) {
+                display: none;
+            }
+            
+            /* Make remaining tentacles visible and animated */
+            .jellyfish1 .tentacle,
+            .jellyfish2 .tentacle,
+            .jellyfish3 .tentacle {
+                width: 4px;
+                animation-duration: 2.5s;
+                filter: blur(1px);
+                background: linear-gradient(to bottom, rgba(200, 160, 255, 0.8), rgba(120, 70, 200, 0.4));
+            }
+            
+            /* Keep body animation */
+            .jellyfish-body {
+                border-width: 2px;
+                box-shadow: 0 0 30px rgba(150, 100, 255, 0.5);
+                animation: pulse 4s infinite ease-in-out;
+            }
+            
+            /* Visible eyes */
+            .jellyfish-eye {
+                width: 12px;
+                height: 12px;
+            }
+            
+            .jellyfish-eye::after {
+                width: 5px;
+                height: 5px;
+                top: 3px;
+                left: 3px;
+            }
+            
+            /* Keep animations */
+            .jellyfish1, .jellyfish2, .jellyfish3 {
+                animation: float 10s infinite ease-in-out !important;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+                border-radius: 30px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                gap: 10px;
+            }
+            
+            .logo i {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 8px;
+                width: 100%;
+            }
+            
+            nav a {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+                width: auto;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 40px 15px;
+                border-radius: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .catchphrase {
+                font-size: 1rem;
+                padding: 15px;
+                width: 100%;
+            }
+            
+            .cta-button {
+                padding: 15px 25px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .service-card {
+                padding: 30px 20px;
+                min-width: 100%;
+            }
+            
+            .service-card h3 {
+                font-size: 1.5rem;
+            }
+            
+            .price {
+                font-size: 1.8rem;
+            }
+            
+            .about-section, .contact-section {
+                gap: 20px;
+            }
+            
+            .about-content, .founder-card, .contact-info, .contact-form {
+                padding: 25px;
+            }
+            
+            .contact-item {
+                padding: 12px;
+            }
+            
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                margin-right: 15px;
+            }
+            
+            .contact-details h4 {
+                font-size: 1rem;
+            }
+            
+            .contact-details p, .contact-details a {
+                font-size: 0.9rem;
+            }
+            
+            .portfolio-item {
+                min-width: 100%;
+            }
+            
+            .portfolio-content {
+                padding: 20px;
+            }
+            
+            .portfolio-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .footer-links {
+                gap: 15px;
+            }
+            
+            .footer-links a {
+                font-size: 1rem;
+            }
+            
+            .page-title {
+                padding: 20px 15px;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Small phones - keep 2 jellyfish with good visibility */
+        @media (max-width: 480px) {
+            /* Show 2 jellyfish on very small screens */
+            .jellyfish3 {
+                display: none;
+            }
+            
+            .jellyfish1, .jellyfish2 {
+                display: block;
+                width: 80px;
+                height: 110px;
+                opacity: 0.7;
+            }
+            
+            /* Keep 3 tentacles */
+            .jellyfish1 .tentacle:nth-child(n+4),
+            .jellyfish2 .tentacle:nth-child(n+4) {
+                display: none;
+            }
+            
+            .jellyfish1 .tentacle,
+            .jellyfish2 .tentacle {
+                width: 3px;
+                animation: tentacleWave 3s infinite ease-in-out;
+            }
+            
+            /* Keep body animation */
+            .jellyfish-body {
+                animation: pulse 5s infinite ease-in-out;
+            }
+            
+            /* Keep swimming animation */
+            .jellyfish1, .jellyfish2 {
+                animation: float 12s infinite ease-in-out !important;
+            }
+            
+            nav ul {
+                gap: 5px;
+            }
+            
+            nav a {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .catchphrase {
+                font-size: 0.9rem;
+            }
+            
+            .service-card i {
+                font-size: 3rem;
+            }
+            
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .portfolio-image {
+                height: 160px;
+                font-size: 3rem;
+            }
+            
+            .founder-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Print styles - hide jellyfish when printing */
+        @media print {
+            .jellyfish-div {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- JELLYFISH-SHAPED DIVS WITH MOVING TENTACLES - MOUTHS REMOVED -->
+    <div class="jellyfish-div jellyfish1">
+        <div class="jellyfish-body">
+            <div class="jellyfish-eyes">
+                <div class="jellyfish-eye"></div>
+                <div class="jellyfish-eye"></div>
+            </div>
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+    
+    <div class="jellyfish-div jellyfish2">
+        <div class="jellyfish-body">
+            <div class="jellyfish-eyes">
+                <div class="jellyfish-eye"></div>
+                <div class="jellyfish-eye"></div>
+            </div>
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+    
+    <div class="jellyfish-div jellyfish3">
+        <div class="jellyfish-body">
+            <div class="jellyfish-eyes">
+                <div class="jellyfish-eye"></div>
+                <div class="jellyfish-eye"></div>
+            </div>
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+    
+    <div class="jellyfish-div jellyfish4">
+        <div class="jellyfish-body">
+            
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+    
+    <div class="jellyfish-div jellyfish5">
+        <div class="jellyfish-body">
+            <div class="jellyfish-eyes">
+                <div class="jellyfish-eye"></div>
+                <div class="jellyfish-eye"></div>
+            </div>
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+    
+    <div class="jellyfish-div jellyfish6">
+        <div class="jellyfish-body">
+            <div class="jellyfish-eyes">
+                <div class="jellyfish-eye"></div>
+                <div class="jellyfish-eye"></div>
+            </div>
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+    
+    <div class="jellyfish-div jellyfish7">
+        <div class="jellyfish-body">
+            <div class="jellyfish-eyes">
+                <div class="jellyfish-eye"></div>
+                <div class="jellyfish-eye"></div>
+            </div>
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+    
+    <div class="jellyfish-div jellyfish8">
+        <div class="jellyfish-body">
+            <div class="jellyfish-eyes">
+                <div class="jellyfish-eye"></div>
+                <div class="jellyfish-eye"></div>
+            </div>
+            <!-- MOUTH DIV REMOVED -->
+        </div>
+        <div class="jellyfish-tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo" onclick="showPage('home'); return false;">
+                <i class="fas fa-fish"></i>
+                <span>Jellyfishing Studios</span>
+                <span class="desktop-emoji">🪼</span>
+                <span class="mobile-emoji"></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('home'); return false;" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" onclick="showPage('services'); return false;" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#" onclick="showPage('portfolio'); return false;" class="nav-link" data-page="portfolio">Portfolio</a></li>
+                    <li><a href="#" onclick="showPage('about'); return false;" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" onclick="showPage('contact'); return false;" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="home" class="page active">
+            <section class="hero">
+                <h1>Digital Solutions That Never Sink <span class="desktop-emoji">🪼</span></h1>
+                <p class="tagline">We create robust websites, web apps, and mobile apps that withstand the currents of the digital ocean.</p>
+                
+                <div class="catchphrase" id="catchphrase">
+                    <i class="fas fa-quote-left"></i>
+                    "If it crashes, we ain't make it – we swim deeper."
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                
+                <a href="#" onclick="showPage('contact'); return false;" class="cta-button">Start Your Project From $30</a>
+            </section>
+
+            <section class="services-home">
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-globe"></i>
+                    <h3>Robust Websites</h3>
+                    <p>We build stunning, high-performance websites that work flawlessly across all devices. Our sites are optimized for speed, SEO, and user experience.</p>
+                    <div class="price">From $30</div>
+                </div>
+                
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Applications</h3>
+                    <p>Custom web applications that solve complex business problems. Scalable, secure, and built with the latest technologies.</p>
+                    <div class="price">From $150</div>
+                </div>
+                
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Apps</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android. Intuitive designs with powerful functionality.</p>
+                    <div class="price">From $200</div>
+                </div>
+            </section>
+        </div>
+
+        <div id="services" class="page">
+            <section class="page-title">
+                <h1>Our Services <span class="desktop-emoji">🪼</span></h1>
+                <p class="page-subtitle">We offer a full spectrum of digital solutions to help your business thrive in the digital ocean.</p>
+            </section>
+
+            <section class="services-section">
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-globe"></i>
+                    <h3>Robust Websites</h3>
+                    <p>We build stunning, high-performance websites that work flawlessly across all devices. Our sites are optimized for speed, SEO, and user experience.</p>
+                    <div class="price">From $30</div>
+                </div>
+                
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Applications</h3>
+                    <p>Custom web applications that solve complex business problems. Scalable, secure, and built with the latest technologies.</p>
+                    <div class="price">From $150</div>
+                </div>
+                
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Apps</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android. Intuitive designs with powerful functionality.</p>
+                    <div class="price">From $200</div>
+                </div>
+
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Complete online store setups with payment integration, inventory management, and responsive design to maximize sales.</p>
+                    <div class="price">From $250</div>
+                </div>
+
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-search"></i>
+                    <h3>SEO & Digital Marketing</h3>
+                    <p>Improve your online visibility with our comprehensive SEO services and digital marketing strategies that drive real results.</p>
+                    <div class="price">From $100/month</div>
+                </div>
+
+                <div class="service-card" onmouseenter="enlargeIcon(this)" onmouseleave="resetIcon(this)">
+                    <i class="fas fa-tools"></i>
+                    <h3>Maintenance & Support</h3>
+                    <p>Ongoing website maintenance, security updates, and technical support to keep your digital presence running smoothly.</p>
+                    <div class="price">From $50/month</div>
+                </div>
+            </section>
+        </div>
+
+        <div id="portfolio" class="page">
+            <section class="page-title">
+                <h1>Our Portfolio <span class="desktop-emoji">🪼</span></h1>
+                <p class="page-subtitle">See how we've helped businesses navigate the digital ocean successfully</p>
+            </section>
+
+            <section class="portfolio-section">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" onmouseenter="enlargePortfolio(this)" onmouseleave="resetPortfolio(this)">
+                        <div class="portfolio-image">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Oceanic Boutique</h3>
+                            <p>A complete e-commerce solution for a fashion retailer with inventory management, payment integration, and responsive design.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">E-commerce</span>
+                                <span class="portfolio-tag">Responsive</span>
+                                <span class="portfolio-tag">WordPress</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" onmouseenter="enlargePortfolio(this)" onmouseleave="resetPortfolio(this)">
+                        <div class="portfolio-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Fitness Tracker App</h3>
+                            <p>A cross-platform mobile application for tracking workouts, nutrition, and progress with social sharing features.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Mobile App</span>
+                                <span class="portfolio-tag">React Native</span>
+                                <span class="portfolio-tag">Fitness</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" onmouseenter="enlargePortfolio(this)" onmouseleave="resetPortfolio(this)">
+                        <div class="portfolio-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Business Analytics Dashboard</h3>
+                            <p>A custom web application for visualizing business metrics, generating reports, and data analysis.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Web App</span>
+                                <span class="portfolio-tag">React</span>
+                                <span class="portfolio-tag">Data Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" onmouseenter="enlargePortfolio(this)" onmouseleave="resetPortfolio(this)">
+                        <div class="portfolio-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Restaurant Booking System</h3>
+                            <p>Complete website with online booking, menu display, and table management system for a fine dining restaurant.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Website</span>
+                                <span class="portfolio-tag">Booking System</span>
+                                <span class="portfolio-tag">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" onmouseenter="enlargePortfolio(this)" onmouseleave="resetPortfolio(this)">
+                        <div class="portfolio-image">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Online Learning Platform</h3>
+                            <p>An educational platform with course management, video lessons, quizzes, and student progress tracking.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">LMS</span>
+                                <span class="portfolio-tag">Web Application</span>
+                                <span class="portfolio-tag">Education</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" onmouseenter="enlargePortfolio(this)" onmouseleave="resetPortfolio(this)">
+                        <div class="portfolio-image">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Corporate Website Redesign</h3>
+                            <p>Complete redesign and optimization of a corporate website with improved SEO and user experience.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Redesign</span>
+                                <span class="portfolio-tag">SEO</span>
+                                <span class="portfolio-tag">Corporate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 40px; color: #b19cd9;">
+                    Want to see more? <a href="#" onclick="showPage('contact'); return false;" class="home-link">Contact us</a> for our full portfolio and case studies.
+                </p>
+            </section>
+        </div>
+
+        <div id="about" class="page">
+            <section class="page-title">
+                <h1>About Jellyfishing Studios <span class="desktop-emoji">🪼</span></h1>
+                <p class="page-subtitle">Diving deep into digital solutions since 2020</p>
+            </section>
+
+            <section class="about-section">
+                <div class="about-content">
+                    <h2 style="color: #7b68ee; margin-bottom: 20px; font-size: 2rem;">Our Story</h2>
+                    <p style="margin-bottom: 20px; line-height: 1.8; color: #e6e6fa;">Jellyfishing Studios was founded by <strong style="color: #7b68ee;">Ralph Chiweshe</strong> with a simple philosophy: create digital solutions that are as resilient and adaptable as jellyfish in the ocean. Just like jellyfish have survived for millions of years by adapting to changing environments, we build websites and applications that stand the test of time and technology shifts.</p>
+                    
+                    <h3 style="color: #7b68ee; margin: 30px 0 15px; font-size: 1.5rem;">What We Offer</h3>
+                    <ul style="margin-left: 20px; line-height: 2; color: #b19cd9;">
+                        <li><strong style="color: #7b68ee;">Custom Website Development</strong> - Responsive, fast, and SEO-optimized sites</li>
+                        <li><strong style="color: #7b68ee;">Web Applications</strong> - Scalable solutions for complex business needs</li>
+                        <li><strong style="color: #7b68ee;">Mobile Applications</strong> - iOS and Android apps with intuitive UX/UI</li>
+                        <li><strong style="color: #7b68ee;">E-commerce Platforms</strong> - Complete online store solutions</li>
+                        <li><strong style="color: #7b68ee;">Digital Marketing & SEO</strong> - Strategies to increase your online visibility</li>
+                        <li><strong style="color: #7b68ee;">Ongoing Support</strong> - Maintenance and updates to keep your digital assets secure</li>
+                    </ul>
+                    
+                    <h3 style="color: #7b68ee; margin: 30px 0 15px; font-size: 1.5rem;">Our Approach</h3>
+                    <p style="line-height: 1.8; color: #e6e6fa;">We believe in transparency, communication, and delivering beyond expectations. Every project begins with understanding your unique needs and ends with a solution that not only meets but exceeds your goals. Our motto, <i>"If it crashes, we ain't make it,"</i> reflects our commitment to quality and reliability.</p>
+                </div>
+                
+                <div class="founder-card">
+                    <div class="founder-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Ralph Chiweshe</h3>
+                    <p class="founder-title">Founder & Lead Developer</p>
+                    <p style="color: #b19cd9; line-height: 1.8;">With over 5 years of experience in web and mobile development, Ralph started Jellyfishing Studios to bring affordable, high-quality digital solutions to businesses of all sizes. His vision combines technical expertise with creative problem-solving.</p>
+                    <div style="margin-top: 30px;">
+                        <button class="submit-btn" onclick="showPage('contact');">Contact Ralph</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="contact" class="page">
+            <section class="page-title">
+                <h1>Contact Us <span class="desktop-emoji">🪼</span></h1>
+                <p class="page-subtitle">Ready to start your project? Get in touch with us today!</p>
+            </section>
+
+            <section class="contact-section">
+                <div class="contact-info">
+                    <h2 style="color: #7b68ee; margin-bottom: 30px; font-size: 2rem;">Get In Touch</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+263774109465">+263 77 410 9465</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:jellyfishingdude@gmail.com">jellyfishingdude@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 9am - 6pm</p>
+                            <p>Saturday: 10am - 2pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Based In</h4>
+                            <p>Harare, Zimbabwe</p>
+                            <p>Remote services worldwide</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px;">
+                        <h3 style="color: #7b68ee; margin-bottom: 20px;">Why Choose Us?</h3>
+                        <ul style="color: #b19cd9; line-height: 2; margin-left: 20px;">
+                            <li>⚡ Fast response time (usually within 2 hours)</li>
+                            <li>🎯 Free initial consultation</li>
+                            <li>💰 Transparent pricing with no hidden fees</li>
+                            <li>🔧 Ongoing support after project completion</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2 style="color: #7b68ee; margin-bottom: 30px; font-size: 2rem;">Send Message</h2>
+                    
+                    <div id="form-status"></div>
+                    
+                    <form action="https://formspree.io/f/xojnlzqd" method="POST">
+                        <input type="hidden" name="_subject" value="New message from Jellyfishing Studios">
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="form-group">
+                            <p id="name-message" style="color: #7b68ee; margin-top: 10px;"></p>
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
+
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+263 77 410 9465">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="Website Development">Website Development</option>
+                                <option value="Web Application">Web Application</option>
+                                <option value="Mobile App">Mobile App</option>
+                                <option value="E-commerce Solution">E-commerce Solution</option>
+                                <option value="SEO & Digital Marketing">SEO & Digital Marketing</option>
+                                <option value="Maintenance & Support">Maintenance & Support</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell us about your project, timeline, and budget..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Jellyfishing Studios. All rights reserved. <span class="desktop-emoji">🪼</span></p>
+            <p>Digital solutions that withstand the test of time and traffic.</p>
+            <div class="footer-links">
+                <a href="tel:+263774109465"><i class="fas fa-phone"></i> +263 77 410 9465</a>
+                <a href="mailto:jellyfishingdude@gmail.com"><i class="fas fa-envelope"></i> jellyfishingdude@gmail.com</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            var pages = document.querySelectorAll('.page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            
+            document.getElementById(pageId).classList.add('active');
+            
+            var navLinks = document.querySelectorAll('.nav-link');
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.remove('active');
+                if (navLinks[i].getAttribute('data-page') === pageId) {
+                    navLinks[i].classList.add('active');
+                }
+            }
+            
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            return false;
+        }
+
+        // Motto rotation
+        const mottoPhrases = [
+            '<i class="fas fa-quote-left"></i> "If it crashes, we ain\'t make it – we swim deeper." <i class="fas fa-quote-right"></i>',
+            '<i class="fas fa-quote-left"></i> "Our code is ocean-proof – it never sinks under pressure." <i class="fas fa-quote-right"></i>',
+            '<i class="fas fa-quote-left"></i> "We don\'t just build apps, we craft digital ecosystems." <i class="fas fa-quote-right"></i>',
+            '<i class="fas fa-quote-left"></i> "From concept to launch, we navigate the complex currents for you." <i class="fas fa-quote-right"></i>',
+            '<i class="fas fa-quote-left"></i> "We swim deeper so your business can float higher." <i class="fas fa-quote-right"></i>',
+            '<i class="fas fa-quote-left"></i> "Stability isn\'t an add-on, it\'s built into our DNA." <i class="fas fa-quote-right"></i>',
+            '<i class="fas fa-quote-left"></i> "Your success is our current – we ride the waves together." <i class="fas fa-quote-right"></i>'
+        ];
+        
+        let currentMottoIndex = 0;
+        const catchphrase = document.getElementById('catchphrase');
+        
+        function changeCatchphrase() {
+            currentMottoIndex = (currentMottoIndex + 1) % mottoPhrases.length;
+            catchphrase.innerHTML = mottoPhrases[currentMottoIndex];
+        }
+        
+        function autoRotateMotto() {
+            currentMottoIndex = (currentMottoIndex + 1) % mottoPhrases.length;
+            catchphrase.innerHTML = mottoPhrases[currentMottoIndex];
+        }
+        
+        // Set up motto interactions
+        if (catchphrase) {
+            catchphrase.addEventListener('click', changeCatchphrase);
+            setInterval(autoRotateMotto, 20000); // Rotate every 20 seconds
+        }
+
+        function enlargeIcon(card) {
+            var icon = card.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'scale(1.3) rotate(5deg)';
+                icon.style.filter = 'drop-shadow(0 0 20px #7b68ee)';
+            }
+        }
+
+        function resetIcon(card) {
+            var icon = card.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+                icon.style.filter = 'none';
+            }
+        }
+
+        function enlargePortfolio(item) {
+            item.style.transform = 'translateY(-15px) scale(1.02)';
+            item.style.boxShadow = '0 30px 50px rgba(123, 104, 238, 0.4)';
+        }
+
+        function resetPortfolio(item) {
+            item.style.transform = 'translateY(0) scale(1)';
+            item.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+        }
+
+        window.onload = function() {
+            showPage('home');
+            
+            var urlParams = new URLSearchParams(window.location.search);
+            var formStatus = document.getElementById('form-status');
+            
+            if (urlParams.has('success')) {
+                formStatus.innerHTML = '<div class="success-message">✨ Thank you! Your message has been sent successfully. We\'ll contact you within 2 hours. ✨</div>';
+                setTimeout(function() {
+                    formStatus.innerHTML = '';
+                }, 5000);
+            }
+            
+            if (urlParams.has('error')) {
+                formStatus.innerHTML = '<div class="error-message">⚠️ Please enter a valid email address. ⚠️</div>';
+                setTimeout(function() {
+                    formStatus.innerHTML = '';
+                }, 5000);
+            }
+        };
+
+    const nameInput = document.getElementById("name");
+const nameMessage = document.getElementById("name-message");
+
+nameInput.addEventListener("input", function () {
+    const value = nameInput.value.toLowerCase();
+
+    if (value.includes("laura")) {
+        nameMessage.textContent = "Hey beautiful 💜";
+    } else {
+        nameMessage.textContent = "";
+    }
+});
+    </script>
+</body>
+</html>
+
+
+
+
+
+
