@@ -1862,22 +1862,21 @@
 
     const nameInput = document.getElementById("name");
 const nameMessage = document.getElementById("name-message");
+const nameInput = document.getElementById("name-input");
 
 nameInput.addEventListener("input", function () {
     const value = nameInput.value.toLowerCase();
 
     if (value.includes("laura")) {
         nameMessage.textContent = "Hey beautiful 💜";
-    }
+    } 
     else if (value.includes("royce")) {
         nameMessage.textContent = "uri paden here?";
     } 
-
     else if (value.includes("denzel")) {
         nameMessage.textContent = "wassup Denzel";
-    }
-       
-     else {
+    } 
+    else {
         nameMessage.textContent = "";
     }
 });
